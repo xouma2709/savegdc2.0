@@ -1,0 +1,36 @@
+{% extends 'base.html.twig' %}
+{% block title %}
+    Paramètres
+{% endblock %}
+{% block body %}
+    <div class="container">
+<h1 class="mt-5">Les établissements  <a class="btn btn-success" href='/params/etab/addEtab'>
+<i class="fa-solid fa-plus"></i></a></h1>
+    <table class="table table-striped">
+            <thead>
+                <tr>
+                    <th>
+                        Etablissement
+                    </th>
+                </tr>
+            </thead>
+            <tbody>
+                {% block content %}
+                    {% for Etablissements in Etablissements %}
+                        <tr>
+                            <td>
+                            <a href={{ path('editEtab', {'id': Etablissements.id}) }}><i class="fa-solid fa-pen-to-square"></i></a> {{ Etablissements.EtabLibelle }}
+                            </td>
+                        
+                        </tr>
+                    {% endfor %}
+                {% endblock %}
+            </tbody>
+        </table>
+        <div class="col text-end">
+    <a class="btn btn-danger" href='/params'><i class="fa-solid fa-backward"></i></a>
+<a class="btn btn-success" href='/params/etab/addEtab'><i class="fa-solid fa-plus"></i></a>
+
+    </div>
+</div>
+{% endblock %}

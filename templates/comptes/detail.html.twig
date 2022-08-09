@@ -1,0 +1,23 @@
+{% block content %}
+<ol><li>
+                                {{ Comptes.Login }}
+                            </li>
+                            <li>
+                                {{ Comptes.DateCreation|date('d-m-Y') }}
+                            </li>
+                            <li>
+                                {{ Comptes.Createur }}
+                            </li>
+                            <li>
+                                {{ Comptes.DateModif|date('d-m-Y') }}
+                            </li>
+                            <li>
+                                {{ Comptes.Modificateur }}
+                            </li>
+                            <li>
+                                {{ Comptes.Actif }}
+                            </li>
+                            <a href={{ path('editCompte', {'id': Comptes.id}) }}>Editer</a>
+                        <a href={{ path('courrier', {'id': Comptes.id}) }}>Courrier</a>
+</ol>                            
+{% endblock %}

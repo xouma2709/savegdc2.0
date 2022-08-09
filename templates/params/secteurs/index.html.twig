@@ -1,0 +1,37 @@
+{% extends 'base.html.twig' %}
+{% block title %}
+    Paramètres
+{% endblock %}
+{% block body %}
+    <div class="container">
+<h1 class="mt-5">Les secteurs   <a class="btn btn-success" href='/params/secteurs/addSecteur'><i class="fa-solid fa-plus"></i></a>
+</h1>
+
+
+    <table class="table table-striped">
+    <thead>
+<tr>
+    <th>Secteurs</th>
+    <th>Etablissment</th>
+</tr>
+</thead>
+<tbody>
+{% block content %}
+    {% for Secteurs in Secteurs %}
+    <tr>
+    <td class="transform1"> {{ Secteurs.SecteurLibelle }} </td>
+
+        <td>{{ Secteurs.Etablissements.EtabLibelle }}</td>
+            <td><a href={{ path('editSecteur', {'id': Secteurs.id}) }}><i class="fa-solid fa-pen-to-square"></i></a></td>
+    </tr>
+    {% endfor %}
+{% endblock %}
+    </tbody>
+</table>
+<div class="col text-end">
+    <a class="btn btn-danger" href='/params'><i class="fa-solid fa-backward"></i></a>
+<a class="btn btn-success" href='/params/secteurs/addSecteur'><i class="fa-solid fa-plus"></i></a>
+
+</div>
+</div>
+{% endblock %}

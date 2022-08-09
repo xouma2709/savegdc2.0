@@ -1,0 +1,297 @@
+
+{% extends 'base.html.twig' %}
+{% block title %}
+Les agents
+{% endblock %}
+{% block script %}
+{% endblock %}
+{% block body %}
+{% block content %}
+<div class='container' style="padding-left: 0px;">
+  <div class="card"  style="width: 25rem; margin-top: 25px; ">
+    <div class="card-header">
+      <div class="row">
+        <div class="col">
+          <h5 class="card-title transform1">
+            {{ Agents.Nom }}
+            {{ Agents.prenom }}
+          </h5>
+        </div>
+        <div class="col text-end">
+          <a href={{ path('editAgent', {'id': Agents.id} )  }}>
+            <i class="fa-solid fa-pen-to-square "></i>
+          </a>
+          <a id="dtogg" data-tooltip="Afficher le detail"><i class="fa-solid fa-circle-info"></i></a>
+        </div>
+      </div>
+      <div class="row">
+        {{ Agents.Fonction.FonctionLibelle }} => {{ Agents.Secteur.Etablissements.EtabLibelle }} // {{ Agents.Secteur.SecteurLibelle}}
+      </div>
+    </div>
+    <div class="card-body" id="ddetail" style="display:none">
+      <p class="card-text">
+        Matricule :
+        {{ Agents.Matricule }}
+      </p>
+      <p class="card-text">
+        Autres prenom(s) :
+        {{ Agents.PrenomAutres }}
+      </p>
+      {% if Agents.EnvoiMail == 1 %}
+      <p class="card-text">
+        Mail :
+        {{ Agents.Mail }}
+      </p>
+      {% else %}
+      <p class="card-text">
+        Mail :
+        <a data-tooltip="Envoi de mail non autorisé"><i class="fa-solid fa-triangle-exclamation"></i><s>{{ Agents.Mail }}</s></a>
+      </p>
+      {% endif %}
+      {% if Agents.EnvoiSms == 1 %}
+      <p class="card-text">
+        Téléphone :
+        {{ Agents.Tel }}
+      </p>
+      {% else %}
+      <p class="card-text">
+        Téléphone :
+        <a data-tooltip="Envoi de Sms non autorisé"><i class="fa-solid fa-triangle-exclamation"></i><s>{{ Agents.Tel }}</s></a>
+      </p>
+      {% endif %}
+    </div>
+  </div>
+
+</div>
+<div class="container">
+  <h1>
+    Comptes
+    <a class="btn btn-success" href={{ path('addcompteagent', {'id': Agents.id } )  }}>
+      <i class="fa-solid fa-plus"></i>
+    </a>
+  </h1>
+  <div class="row">
+    {% for Comptes in Comptes %}
+
+    <div class='card'>
+      <div class='card-header' style="max-height:80px">
+        <div class='row gx-0'>
+          <div class="col-4">
+            <h4>{{ loop.index }}
+            {% if Comptes.Actif == 1 %}
+            <a  data-tooltip="Comtpe Actif"><i class="fa-solid fa-user-tag text-success"> : </i></a>
+            {% else %}
+            <a data-tooltip="Comtpe Inctif"><i class="fa-solid fa-user-slash text-warning"> : </i></a>
+              {% endif %} {{ Comptes.login }}
+              <a class="text-right" data-tooltip="Editer le compte" href={{ path('editcompteagent', {'id': Agents.id, 'idcompte': Comptes.id } )  }}>
+                <i class="fa-solid fa-pen-to-square "></i>
+              </a>
+              {% if (Comptes.Pwd is not null) and (Comptes.Pwd != 'NULL') %}
+              <a id="togg{{loop.index}}" data-tooltip="Afficher le mot de passe" ><i class="fa-solid fa-eye" id="eye{{loop.index}}"></i></a>
+              {% else %}
+              <a data-tooltip="Générer un mot de passe" href={{ path('newPwd', {'id': Agents.id, 'idcompte': Comptes.id } )  }} style="color:inherit;"><i class="fa-solid fa-rotate"></i></a>
+              {% endif %}
+              <a id="btogg{{loop.index}}" data-tooltip="Afficher le detail"><i class="fa-solid fa-circle-info"></i></a>
+              <span id="pwd{{loop.index}}" style="display:none"> {{ Comptes.pwd }}</span>
+            </h4>
+          </div>
+          <div class="col"><ul>
+            {% for Softs in Comptes.Softs %}
+            {% if loop.last %}
+                {{ Softs.SoftLibelle }}
+                {% else %}
+                    {{ Softs.SoftLibelle }} -
+                    {% endif %}
+            {% endfor %}
+
+          </div>
+          <div class="col-3">
+            <div class="row">
+              <div class="col">
+                <a class="btn btn-primary btn-sm" data-tooltip="Générer enveloppe" href="/comptes/{{ Comptes.id }}/enveloppe">
+                  <i class="fa-solid fa-envelope"></i>
+                </a>
+
+                {% if (Comptes.Pwd is not null) and (Comptes.Pwd != 'NULL') %}
+
+                <a class="btn btn-primary btn-sm" data-tooltip="Générer courrier" href="/comptes/{{ Comptes.id }}/courrier">
+                  <i class="fa-solid fa-envelope-open-text"></i>
+                </a>
+                {% endif %}
+                {% if Agents.Mail is not null %}
+                {% if Agents.EnvoiMail == 1 %}
+                <a class="btn btn-info btn-sm" data-tooltip="Envoyer login par email" href={{ path('sendEmailInit', {'id': Agents.id, 'idcompte': Comptes.id } )  }}>
+                  <i class="fa-solid fa-user"> <i class="fa-solid fa-at"></i></i>
+                </a>
+                {% if (Comptes.Pwd is not null) and (Comptes.Pwd != 'NULL') %}
+                <a class="btn btn-info btn-sm" data-tooltip="Envoyer mot de passe par email" href={{ path('sendEmailPwdInit', {'id': Agents.id, 'idcompte': Comptes.id } )  }}>
+                  <i class="fa-solid fa-key"> <i class="fa-solid fa-at"></i></i>
+                </a>
+                {% endif %}
+                {% else %}
+                <a class="btn btn-secondary btn-sm" data-tooltip="Envoi par mail non autorisé" disabled>
+                  <i class="fa-solid fa-user"> <i class="fa-solid fa-at"></i></i>
+                </a>
+                <a class="btn btn-secondary btn-sm" data-tooltip="Envoi par mail non autorisé" disabled>
+                  <i class="fa-solid fa-key"> <i class="fa-solid fa-at"></i></i>
+                </a>
+                {% endif %}
+                {% endif %}
+                {% if Agents.Tel is not null %}
+                {% if Agents.EnvoiSMS == 1 %}
+                <a class="btn btn-primary btn-sm" data-tooltip="Envoyer login par SMS" href={{ path('sendSmsInit', {'id': Agents.id, 'idcompte': Comptes.id } )  }}>
+                  <i class="fa-solid fa-user"> <i class="fa-solid fa-comment-sms"></i></i>
+                </a>
+                {% if (Comptes.Pwd is not null) and (Comptes.Pwd != 'NULL') %}
+                <a class="btn btn-primary btn-sm" data-tooltip="Envoyer mot de passe par SMS" href={{ path('sendSmsInitPwd', {'id': Agents.id, 'idcompte': Comptes.id } )  }}>
+                  <i class="fa-solid fa-key"> <i class="fa-solid fa-comment-sms"></i></i>
+                {% endif %}
+                </a>
+                {% else %}
+                <a class="btn btn-secondary btn-sm" data-tooltip="Envoi par SMS non autorisé" disabled>
+                  <i class="fa-solid fa-user"> <i class="fa-solid fa-comment-sms"></i></i>
+                </a>
+                <a class="btn btn-secondary btn-sm" data-tooltip="Envoi par SMS non autorisé" disabled>
+                  <i class="fa-solid fa-key"> <i class="fa-solid fa-comment-sms"></i></i>
+                </a>
+                {% endif %}
+                {% endif %}
+              </div>
+            </div>
+          </div>
+          <div class="col-2" style="text-align:end;">
+            Crée par : {{ Comptes.Createur}} le {{ Comptes.DateCreation|date('d-m-Y') }} <br>
+            Modifié par : {{ Comptes.Modificateur }} le {{ Comptes.DateModif|date('d-m-Y') }}
+
+          </div>
+        </div>
+      </div>
+      <div class="row">
+        <span id="adetail{{loop.index}}"  style="display:none">
+          {% for Softs in Comptes.Softs %}
+          <div class='card-body'>
+            <div class="row">
+              <div class="col-1">
+                <h5 class="card-title">
+                  {{ Softs.SoftLibelle }}
+                </h5>
+              </div>
+              <div class="col">
+                {% if Agents.Mail is not null %}
+                {% if Agents.EnvoiMail == 1 %}
+                <a class="btn btn-info btn-sm" data-tooltip="Envoyer login par email" href={{ path('sendEmail', {'id': Agents.id, 'idcompte': Comptes.id, 'idsoft': Softs.id } )  }}>
+                  <i class="fa-solid fa-user"> <i class="fa-solid fa-at"></i></i>
+                </a>
+                {% if (Comptes.Pwd is not null) and (Comptes.Pwd != 'NULL') %}
+
+                <a class="btn btn-info btn-sm" data-tooltip="Envoyer mot de passe par email" href={{ path('sendEmailPwd', {'id': Agents.id, 'idcompte': Comptes.id, 'idsoft': Softs.id } )  }}>
+                  <i class="fa-solid fa-key"> <i class="fa-solid fa-at"></i></i>
+                </a>
+                {% endif %}
+                {% else %}
+                <a class="btn btn-secondary btn-sm" data-tooltip="Envoi par mail non autorisé" disabled>
+                  <i class="fa-solid fa-user"> <i class="fa-solid fa-at"></i></i>
+                </a>
+                <a class="btn btn-secondary btn-sm" data-tooltip="Envoi par mail non autorisé" disabled>
+                  <i class="fa-solid fa-key"> <i class="fa-solid fa-at"></i></i>
+                </a>
+                {% endif %}
+                {% endif %}
+                {% if Agents.Tel is not null %}
+                {% if Agents.EnvoiSms == 1 %}
+                <a class="btn btn-primary btn-sm" data-tooltip="Envoyer login par SMS" href={{ path('sendSms', {'id': Agents.id, 'idcompte': Comptes.id, 'idsoft': Softs.id } )  }}>
+                  <i class="fa-solid fa-user"> <i class="fa-solid fa-comment-sms"></i></i>
+                </a>
+                {% if (Comptes.Pwd is not null) and (Comptes.Pwd != 'NULL') %}
+
+                <a class="btn btn-primary btn-sm" data-tooltip="Envoyer mot de passe par SMS" href={{ path('sendSmsPwd', {'id': Agents.id, 'idcompte': Comptes.id, 'idsoft': Softs.id } )  }}>
+                  <i class="fa-solid fa-key"> <i class="fa-solid fa-comment-sms"></i></i>
+                </a>
+                {% endif %}
+                {% else %}
+                <a class="btn btn-secondary btn-sm" data-tooltip="Envoi par SMS non autorisé" disabled>
+                  <i class="fa-solid fa-user"> <i class="fa-solid fa-comment-sms"></i></i>
+                </a>
+                <a class="btn btn-secondary btn-sm" data-tooltip="Envoi par SMS non autorisé" disabled>
+                  <i class="fa-solid fa-key"> <i class="fa-solid fa-comment-sms"></i></i>
+                </a>
+                {% endif %}
+                {% endif %}
+              </div>
+            </div>
+          </div>
+
+          {% endfor %}
+        </span>
+      </div>
+    </div>
+    {% endfor %}
+  </div>
+</div>
+</div>
+<div class="container">
+  <h1>
+    Contrats
+    <a class="btn btn-success" href={{ path('addcontratagent', {'id': Agents.id } )  }}>
+      <i class="fa-solid fa-plus"></i>
+    </a>
+  </h1>
+  <div class="row">
+    {% for Contrats in Contrats %}
+    <div class='col-3'>
+      <div class="card" style="width: 20rem; margin-left=15px">
+        <div class="card-header">
+          <div class="row">
+            {% if Contrats.dernierContrat == 1 %}
+            <h4 class="card-title">
+              <span class="text-success" data-tooltip="Dernier contrat">
+
+              {{ loop.index }}
+              Contrat
+              {{ Contrats.id }}</span>
+              {% else %}
+              <h4 class="card-title">
+                {{ loop.index }}
+
+              Contrat
+              {{ Contrats.id }}
+              {% endif %}
+              <a  href={{ path('editcontratagent', {'id': Agents.id, 'idcontrat': Contrats.id } )  }} data-tooltip="Editer contrat">
+                <i class="fa-solid fa-pen-to-square "></i>
+              </a>
+              <a id="ctogg{{loop.index}}" data-tooltip="Afficher le detail"><i class="fa-solid fa-circle-info"></i></a>
+            </h4>
+          </div>
+        </div>
+        <div class="card-body" id="cdetail{{loop.index}}" style="display:none">
+          <h6 class="card-subtitle mb-2">
+            {{ Contrats.TypeContrat.TypeContratLibelle }}
+          </h6>
+          <p class="card-text">
+            Date de début :
+            {{ Contrats.datedebut|date('d-m-Y') }}
+          </p>
+          <p class="card-text">
+            Date de fin :
+            {{ Contrats.datefin|date('d-m-Y') }}
+          </p>
+          <a class="btn btn-outline-primary btn-sm" href='http://intranet/projeqtor/view/main.php?directAccess=true&objectClass=Ticket&objectId={{ Contrats.preuve }}' target='_blank'>
+            Voir la preuve
+          </a>
+        </div>
+        <div class="card-footer" id="bdetail{{loop.index}}" style="display:none">
+          Ajouté par {{ Contrats.Createur }} le {{ Contrats.DateAjout|date('d-m-Y') }}
+        </div>
+      </div>
+    </div>
+    {% endfor %}
+  </div>
+  <div>
+  </div>
+</div>
+{% endblock %}
+{% endblock %}
+{% block scripts %}
+<script>
+</script>
+{% endblock %}

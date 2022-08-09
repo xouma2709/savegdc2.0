@@ -1,0 +1,20 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Les agents{% endblock %}
+
+{% block body %}
+    <div>
+                    <a href={{ path('addcontratagent', {'id': Agents.id } )  }}>
+                Ajouter un contrat
+    </div>
+    {% for Contrats in Contrats %}
+        <div>
+            {{Contrats.id}}  
+        <a href="http://intranet/projeqtor/view/main.php?directAccess=true&objectClass=Ticket&objectId="{{Contrats.preuve}}>Voir la preuve</a>
+            <a href={{ path('editcontratagent', {'id': Agents.id, 'idcontrat': Contrats.id } )  }}>
+            Editer
+        </a>
+        </div>
+    {% endfor %}
+    
+{% endblock %}

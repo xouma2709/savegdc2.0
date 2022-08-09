@@ -1,0 +1,48 @@
+default:
+   path: /
+   controller: App\Controller\DefaultController::index
+
+
+params:
+    path: /params
+    controller: App\Controller\ParamsController::index
+
+agents:
+    path: /agents
+    controller: App\Controller\AgentsController::index
+
+softs:
+    path: /params/softs
+    controller: App\Controller\SoftsController::showSofts
+
+fonctions:
+    path: /params/fonctions
+    controller: App\Controller\FonctionsController::index
+
+secteurs:
+    path: /params/secteurs
+    controller: App\Controller\SecteursController::index
+
+typescontrat:
+    path: /params/typescontrat
+    controller: App\Controller\TypescontratController::index
+
+etab:
+    path: /params/etab
+    controller: App\Controller\EtabController::index
+
+comptes:
+    path: /comptes
+    controller: App\Controller\ComptesController::index
+
+searchBar:
+    path: /searchBar
+    controller: App\Controller\SearchBarController::index
+
+app_login:
+    path: /login
+    controller: App\Controller\LoginController::index
+
+app_logout:
+    path: /logout
+    methods: GET

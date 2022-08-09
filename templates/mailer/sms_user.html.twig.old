@@ -1,0 +1,9 @@
+{% block body %}
+{% block content %}
+Bonjour {{ Agent.Nom }} {{ Agent.Prenom }}, vous avez été recruté en tant que {{ Agent.Fonction.FonctionLibelle }} dans le secteur {{ Agent.Secteur.Etablissements.EtabLibelle }} // {{ Agent.Secteur.SecteurLibelle}}. Vous avez donc accès aux applications suivantes :
+ {{ Soft.SoftLibelle }}. Votre identifiant de connexion est : {{ Compte.login }}. Vous recevrez votre mot de passe dans un prochain SMS! Bonne journée. Cordialement, Le service informatique (28070).{% endblock %} 
+{% endblock %}
+{% block scripts %}
+<script>
+</script>
+{% endblock %}

@@ -1,0 +1,16 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Paramètres{% endblock %}
+
+{% block body %}
+    <div class="container">
+        <div class="row">
+            <div class="col s12 m12 l12">
+                <h4>Ajout d'un soft</h4>
+            </div>
+        </div>
+
+        Le logiciel a été ajouté à la liste
+            {{ form(form) }}
+    </div>
+{% endblock %}

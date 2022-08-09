@@ -1,0 +1,89 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Les agents{% endblock %}
+
+{% block body %}
+    {% block content %}
+
+    <div class="container">
+    <h1 class="mt-5">Les Agents  <a class="btn btn-success" href='/agents/addAgent'><i class="fa-solid fa-plus"></i>  Ajouter</a></h1>
+
+    <div class="row">
+
+    <div class="container">
+            <table class="table" id="example">
+                <thead>
+                    <tr>
+                        <th>
+                            Nom
+                        </th>
+                        <th>
+                            Prénom
+                        </th>
+                        <th>
+                            Prénom autres
+                        </th>
+                        <th>
+                            Secteur
+                        </th>
+                        <th>
+                            Fonction
+                        </th>
+                        <th>
+                            Matricule
+                        </th>
+                        <th></th>
+                    </tr>
+                </thead>
+                <tbody>
+
+                    {% for Agents in Agents %}
+                        <tr>
+                            <th>
+                                {{ Agents.Nom }}
+                            </th>
+                            <td>
+                                {{ Agents.prenom }}
+                            </td>
+                            <td>
+                                {{ Agents.PrenomAutres }}
+                            </td>
+                            <td>
+                                {{ Agents.Secteur.SecteurLibelle }}
+                            </td>
+                            <td>
+                                {{ Agents.Fonction.FonctionLibelle }}
+                            </td>
+                            <td>
+                                {{ Agents.Matricule }}
+                            </td>
+                            <td><a href={{ path('agent', {'id': Agents.id}) }}><i class="fa-solid fa-eye"></i></a>
+                            <a href={{ path('editAgent', {'id': Agents.id}) }}><i class="fa-solid fa-pen-to-square"></i></a>
+                    </td>
+                        </tr>
+                    {% endfor %}
+
+                </tbody>
+            </table>
+            </div>
+            <div class="row" style="margin-top:20px;Margin-right:0px;">
+            <div class="text-end">
+            <a class="btn btn-success" href='/agents/addAgent'><i class="fa-solid fa-plus"></i> Ajouter</a>
+            </div></div>
+        </div>
+        {% endblock %}
+    {% endblock %}
+    {% block script %}
+
+<script src="https://code.jquery.com/jquery-3.6.0.js" integrity="sha256-H+K7U5CnXl1h5ywQfKtSj8PCmoN9aaq30gDh27Xc0jk=" crossorigin="anonymous"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/cesiumjs/1.78/Build/Cesium/Cesium.js"></script>
+<script src="https://code.jquery.com/ui/1.13.0/jquery-ui.js" integrity="sha256-xH4q8N0pEzrZMaRmd7gQVcTZiFei+HfRTBPJ1OGXC0k=" crossorigin="anonymous"></script>
+
+<script>
+
+$(document).ready(function () {
+    $('#example').DataTable();
+});
+
+</script>
+{% endblock %}

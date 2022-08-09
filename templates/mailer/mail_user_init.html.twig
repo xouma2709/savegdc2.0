@@ -1,0 +1,28 @@
+{% block body %}
+      {% block content %}
+                  <h5> Bonjour  {{ Agent.Nom }} {{ Agent.Prenom }}, </h5>
+                  <p>vous avez été recruté en tant que {{ Agent.Fonction.FonctionLibelle }} dans le secteur {{ Agent.Secteur.Etablissements.EtabLibelle }} // {{ Agent.Secteur.SecteurLibelle}}.</p>
+			<p>Vous avez donc accès aux applications suivantes :<ul>
+				                                                {% for Soft in Compte.Softs %}
+
+                                                                
+                                         <li> {{ Soft.SoftLibelle }} </li> {% endfor %}
+                              </ul>
+                  </p>
+                  <p>
+                  Votre identifiant de connexion est : <h2>{{ Compte.login }}</h2>
+                  </p>
+                  <p>
+                  Vous recevrez votre mot de passe dans un prochain mail!
+                  </p>
+                  <p>Bonne journée.<br><br>Cordialement,<br>Le service informatique (28070).
+                                                        
+
+                                                
+      {% endblock %} 
+{% endblock %}
+{% block scripts %}
+<script>
+</script>
+
+{% endblock %}

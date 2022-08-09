@@ -1,0 +1,13 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Paramètres{% endblock %}
+
+{% block body %}
+<ol>
+        <li> {{ Etablissements.EtabLibelle }}</li>
+        <li><a href={{ path('editEtab', {'id': Etablissements.id}) }}>Editer</a></li>
+</ol>
+<div>
+<a href='/params/etab'>Retour</a>
+</div>
+{% endblock %}

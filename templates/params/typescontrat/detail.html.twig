@@ -1,0 +1,10 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Paramètres{% endblock %}
+
+{% block body %}
+<ol>
+        <li> {{ TypesContrat.TypeContratLibelle }}</li>
+        <li><a href={{ path('editTypeContrat', {'id': TypesContrat.id}) }}>Editer</a></li>
+</ol>
+{% endblock %}

@@ -1,0 +1,21 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Les agents{% endblock %}
+
+{% block body %}
+    <div>
+                    <a href={{ path('addcompteagent', {'id': Agents.id } )  }}>
+                Ajouter un compte
+            </a>
+    </div>
+    {% for Comptes in Comptes %}
+        {% for Softs in Comptes.Softs %}
+        <div>
+            {{Softs.SoftLibelle}}  {{Comptes.login}} <a href={{ path('editcompteagent', {'id': Agents.id, 'idcompte': Comptes.id } )  }}>
+            Editer
+        </a>
+        </div>
+        {% endfor %} 
+    {% endfor %}
+    
+{% endblock %}

@@ -1,0 +1,10 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Paramètres{% endblock %}
+
+{% block body %}
+<ol>
+        <li> {{ Secteurs.SecteurLibelle }}</li>
+        <li><a href={{ path('editSecteur', {'id': Secteurs.id}) }}>Editer</a></li>
+</ol>
+{% endblock %}

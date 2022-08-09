@@ -1,0 +1,17 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Les agents{% endblock %}
+
+{% block body %}
+{% block content %}
+    <div class="container">
+        <div class="row">
+            <div class="col s12 m12 l12">
+                <h4>Ajout d'un agent</h4>
+            </div>
+        </div>
+
+            {{ form(form) }}
+        {% endblock %}
+    </div>
+{% endblock %}

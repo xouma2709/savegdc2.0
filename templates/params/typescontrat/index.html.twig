@@ -1,0 +1,41 @@
+{% extends 'base.html.twig' %}
+{% block title %}
+    Paramètres
+{% endblock %}
+{% block body %}
+    <div class="container">
+<h1 class="mt-5">Les types de contrat  <a class="btn btn-success" href='/params/typescontrat/addTypeContrat'><i class="fa-solid fa-plus"></i></a>
+</h1>
+    <table class="table table-striped">
+                <thead>
+                <tr>
+                    <th>
+                        Type de contrats
+                    </th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for TypesContrat in TypesContrat %}
+                    <tr>
+                        <td>
+                            {{ TypesContrat.TypeContratLibelle }}
+                        </td>
+                        <td>
+                            <a href={{ path('editTypeContrat', {'id': TypesContrat.id} )  }}>
+                                Editer
+                            </a>
+                        </td>
+                    </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+
+        <div class="col text-end">
+    <a class="btn btn-danger" href='/params'><i class="fa-solid fa-backward"></i></a>
+<a class="btn btn-success" href='/params/typescontrat/addTypeContrat'><i class="fa-solid fa-plus"></i></a>
+
+    </div>
+
+</div>
+
+{% endblock %}

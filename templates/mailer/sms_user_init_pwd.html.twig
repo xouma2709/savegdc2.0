@@ -1,0 +1,8 @@
+{% block body %}
+{% block content %}
+Bonjour {{ Agent.Nom }} {{ Agent.Prenom }}, vous avez été recruté en tant que {{ Agent.Fonction.FonctionLibelle }} dans le secteur {{ Agent.Secteur.Etablissements.EtabLibelle }} // {{ Agent.Secteur.SecteurLibelle}}. Vous avez accès aux logiciels suivants : {% for Soft in Compte.Softs %} {{ Soft.SoftLibelle }} {% endfor %}.Votre mot de passe est : {{ Compte.pwd }}. Bonne journée. Cordialement, Le service informatique (28070).{% endblock %} 
+{% endblock %}
+{% block scripts %}
+<script>
+</script>
+{% endblock %}

@@ -1,0 +1,13 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Paramètres{% endblock %}
+
+{% block body %}
+<ol>
+        <li> {{ Softs.SoftLibelle }}</li>
+        <li> {{ Softs.synchroAD }}</li>
+        <li> {{ Softs.Precisions }}</li>
+        <li> {{ Softs.actif }}</li>
+        <li><a href={{ path('editSoft', {'id': Softs.id}) }}>Editer</a></li>
+</ol>
+{% endblock %}

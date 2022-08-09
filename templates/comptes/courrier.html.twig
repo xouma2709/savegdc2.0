@@ -1,0 +1,305 @@
+        <meta charset="UTF-8">
+
+
+{% block content %}
+<!-- page 1 -->
+
+<p>
+
+<table>
+<tr>
+<td>
+<img src="{{ absolute_url(asset('/build/images/Logochcalais.png')) }}" style="margin-right=0px;margin-left=0px;"/>
+
+
+</td>
+<td>
+Service Informatique<br>
+1601 Boulevard des justes<br>
+62107 CALAIS Cedex
+</td><tr></table>
+</p>
+<p style="height:25px"></p>
+<h1 style="text-align:center;font-size:20px;">Code d'acces</h1>
+<p style="height:25px"></p>
+
+
+<p>
+Destinataire :  {{ Comptes.Agents.Nom }} {{ Comptes.Agents.Prenom }} <br>
+Pole/Service : {{ Comptes.Agents.Secteur.Etablissements.EtabLibelle }} / {{ Comptes.Agents.Secteur.SecteurLibelle }}<br>
+<p style="height:25px"></p>
+
+
+<p>Conformément aux procédures de gestion d’attribution des codes d’accès au Dossier Patient Informatisé pour les utilisateurs non médicaux :<br><br>
+<p style="height:25px"></p>
+
+Voici vos codes d’accès au logiciel du Dossier Patient Informatisé. </p>
+<p style="color:red;text-align:center;">Ces codes sont strictement personnels.</i> </p>
+
+<p style="text-align:center;">Nom d’utilisateur : {{ Comptes.Login }}</p>
+<p style="text-align:center;">Mot de passe : {{ Comptes.Pwd }}
+</p>
+<p>
+Ce mot de passe est temporaire. Il vous sera demandé de le modifier dès votre première connexion.<br>
+
+ <p style="height:25px"></p>
+
+
+<br>Documents joints à ce courrier :
+<ul>
+<li>Rappel aux paramédicaux des obligations professionnelles dans le cadre de leur activité professionnelle et notamment dans  l’utilisation du Dossier Patient Informatisé.    </li>
+<li>Document à retourner au Service Informatique attestant de la bonne réception du code d’accès.</li>
+<li>Document avec la liste des applicatifs utilisables avec votre code d’accès au dossier médical</li>
+</ul>
+</p>
+ <p style="height:25px"></p>
+
+
+<p>Restant à votre disposition,</p>
+
+
+<p style="text-align:right;">Service Informatique</p>
+<div style = "display:block; clear:both; page-break-after:always;"></div>
+
+
+<!-- page 2 -->
+<p>
+<table>
+<tr>
+<td>
+<img src="{{ absolute_url(asset('/build/images/Logochcalais.png')) }}"/>
+
+
+</td>
+<td>
+Service Informatique<br>
+1601 Boulevard des justes<br>
+62107 CALAIS Cedex
+</td><tr></table>
+
+ <p style="text-align:right;">Calais, le 27 mai 2018</p>
+
+ 
+
+<p style="text-decorationn:underline;">Objet : </p>
+
+<p>Rappel aux paramédicaux des obligations professionnelles dans le cadre de leur activité professionnelle et notamment dans l’utilisation du dossier patient informatisé.</p>
+<p>Nous tenions à vous  rappeler que vous êtes tenus au secret professionnel et à la discrétion professionnelle conformément au texte de loi ci-dessous :
+<ul>
+<li style="font-weight: bold;">Art L1110-4 du Code de la Santé Publique introduit par la loi 2002-303 du 4 mars 2002</li>
+</ul>
+
+« Toute personne prise en charge par un professionnel, un établissement, un réseau de santé ou tout autre organisme participant à la prévention et aux soins a droit au respect de sa vie privée et du secret des informations la concernant. 
+
+Excepté dans les cas de dérogation, expressément prévus par la loi, ce secret couvre l'ensemble des informations concernant la personne venues à la connaissance du professionnel de santé, de tout membre du personnel de ces établissements ou organismes et de toute autre personne en relation, de par ses activités, avec ces établissements ou organismes. Il s'impose à tout professionnel de santé, ainsi qu'à tous les professionnels intervenant dans le système de santé. 
+
+Deux ou plusieurs professionnels de santé peuvent toutefois, sauf opposition de la personne dûment avertie, échanger des informations relatives à une même personne prise en charge, afin d'assurer la continuité des soins ou de déterminer la meilleure prise en charge sanitaire possible. Lorsque la personne est prise en charge par une équipe de soins dans un établissement de santé, les informations la concernant sont réputées confiées par le malade à l'ensemble de l'équipe ».
+
+<ul>
+<li style="font-weight: bold;">Art 226-13 du Code Pénal</li>
+</ul>
+
+La révélation d’une information à caractère secret par une personne qui en est dépositaire soit par état ou par profession, soit en raison d’une fonction ou d’une mission temporaire, est punie d’un an d’emprisonnement et de 15 000 euros d’amende.
+<p style="font-weight: bold;">Vous n’avez, en aucun cas, le droit de consulter le dossier d’un patient que vous n’avez pas à prendre en charge. Toute intrusion est tracée informatiquement.</p>
+
+<p style="text-decoration:underline;">Des droits d’accès ont été définis par catégorie professionnelle : </p>
+
+<ul>
+<li>soit vous avez accès à l’ensemble des dossiers de l’ensemble des UF</li>
+<li>soit vous avez accès aux dossiers des UF de votre pôle sans accès aux dossiers des autres pôles</li>
+<li>soit vous n’avez aucun accès.</li>
+</ul>
+<p>Nous vous informons que des contrôles d’accès sont réalisés mensuellement et que des sanctions peuvent être appliquées en fonction des anomalies d’accès incohérents rencontrées.</p>
+
+<p style="font-weight: bold;">Votre login et votre mot de passe vous sont personnels. Vous n’avez en aucun cas à utiliser ceux d’une autre personne ou à communique les vôtres.</p>
+
+<p>Veuillez agréer l’expression de nos salutations distinguées.</p>
+
+<table >
+    <tr>
+    <td style="width:50px;"></td>
+    <td style="width:450px;">Madame HENNION,</td>
+    <td></td>
+    <td style="width:450px;">Monsieur le Dr DUMONT,</td>
+    <td></td>
+    </tr>
+
+    <tr>
+    <td style="width:50px;"></td>
+    <td style="width:450px;">Directeur</td>
+    <td></td>
+    <td style="width:450px;">Président de CME</td>
+    <td></td>
+    </tr>
+
+    <tr style="height:50px;"></tr>
+
+    <tr>
+    <td style="width:50px;"></td>
+    <td style="width:450px;">Monsieur CADART,</td>
+    <td></td>
+    <td style="width:450px;">Monsieur le Dr DUMONT,</td>
+    <td></td>
+    </tr>
+
+    <tr>
+    <td></td>
+    <td style="width:450px;">Directeur des Soins</td>
+    <td></td>
+    <td style="width:450px;">Médecin du DIM</td>
+    <td></td>
+    </tr>
+
+    <tr style="height:50px;"></tr>
+
+<tr>
+    <td style="width:50px;"></td>
+    <td style="width:450px;">Madame le Dr DECERF,</td>
+    <td></td>
+    <td style="width:450px;">Pour le COPIL DPI :</td>
+    <td></td>
+    </tr>
+
+    <tr>
+    <td style="width:50px;"></td>
+    <td style="width:450px;">Médecin responsable du service Qualité</td>
+    <td></td>
+    <td style="width:450px;">Madame VANSTEENBERGHE</td>
+    <td></td>
+    </tr>
+<tr>
+    <td style="width:50px;"></td>
+    <td style="width:450px;">et coordonnateur des Risques liés aux soins</td>
+    <td></td>
+    <td style="width:450px;">et Madame GALLAND</td>
+    <td></td>
+    </tr>
+
+
+</table>
+ 
+</p>
+
+<div style = "display:block; clear:both; page-break-after:always;"></div>
+
+<!-- page 3 -->
+<p>
+<table>
+<tr>
+<td>
+<img src="{{ absolute_url(asset('/build/images/Logochcalais.png')) }}"/>
+
+
+</td>
+<td>
+Service Informatique<br>
+1601 Boulevard des justes<br>
+62107 CALAIS Cedex
+</td><tr></table></p>
+ <p style="height:25px"></p>
+
+
+<h2 style="color:red;text-align:center;font-size:16px">DOCUMENT A RETOURNER AU SERVICE INFORMATIQUE DU CENTRE HOSPITALIER DE CALAIS</h2>
+
+  <p style="height:25px"></p>
+
+
+<p>Code d’accès au Dossier Médical</p>
+ <p style="height:25px"></p>
+
+<p>Je soussigné,  {{ Comptes.Agents.Nom }} {{ Comptes.Agents.Prenom }} entré(e) dans l’établissement en qualité de {{ Comptes.Agents.Fonction.FonctionLibelle }} atteste avoir reçu une enveloppe confidentielle non ouverte contenant mes codes d’accès au Dossier Médical Informatisé.  
+<p>Documents présents dans l’enveloppe :</p>
+ <p style="height:25px"></p>
+
+<ul>
+<li>Courrier contenant mon code utilisateur et mot de passe au Dossier Patient Informatisé. </li>
+<li>Rappel aux paramédicaux des obligations professionnelles dans le cadre de leur activité professionnelle et notamment dans  l’utilisation du Dossier Patient Informatisé.</li>
+<li>Document à retourner au Service Informatique attestant de la bonne réception du code d’accès (ce document)</li>
+</ul>
+</p>
+ <p style="height:250px"></p>
+<p>
+<table>
+<tr>
+<td style="width:500px"></td>
+<td style="width:250px">Fait à            </td>
+<td style="width:150px">, le</td>
+
+</tr>
+<tr>
+<td style="width:500px"></td>
+<td style="width:250px">Signature :</td>
+<td style="width:150px"></td>
+
+</tr>
+</table>
+</p>
+
+ 
+
+ 
+
+
+</p>
+<div style = "display:block; clear:both; page-break-after:always;"></div>
+
+<!--page4-->
+<table>
+<tr>
+<td>
+<img src="{{ absolute_url(asset('/build/images/Logochcalais.png')) }}"/>
+
+
+</td>
+<td>
+Service Informatique<br>
+1601 Boulevard des justes<br>
+62107 CALAIS Cedex
+</td><tr></table></p>
+<p>
+<h2 style="text-align:center;">Liste des applicatifs utilisables avec votre Code d’accès au Dossier Médical</h2>
+<ul>
+
+{% for Softs in Comptes.Softs %}
+<li>
+{{ Softs.SoftLibelle }}
+</li>
+{% endfor %}
+ </ul>
+
+Si vous avez besoin d’accéder à un ou plusieurs autres logiciels de la liste ci-dessus, veuillez demander à votre cadre de transmettre la demande par mail à l’adresse suivante : dpi@ch-calais.fr 
+Si, à la réception de ce courrier, votre code ne fonctionne pas pour un ou plusieurs des logiciels alors qu’il le devrait, contactez le 28070. 
+Pour tout problème avec votre compte Windows ou Outlook (si vous en possédez un) contactez le 28080. 
+
+</p>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+{% endblock %}
+
+
+

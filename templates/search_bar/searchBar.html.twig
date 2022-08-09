@@ -1,0 +1,9 @@
+
+
+{{ form_start(form, {'attr': {'class': 'input-group rounded', 'style': 'padding-left:20px; padding-top:8px; ', 'action': path('searchMenu')}}) }}
+
+  {{ form_widget(form.Nom, {'attr': {'placeholder': 'Nom ou Matricule', 'class': 'form-control rounded', 'aria-label': 'Search', 'aria-describedby': 'search-addon'}}) }}
+  {{ form_widget(form.Recherche, {'attr': { 'class': 'fas fa-search btn btn-secondary',  }} ) }}
+
+
+{{ form_end(form) }}

@@ -1,0 +1,13 @@
+{% block content %}
+    <div class="container">
+        <div class="row">
+            <div class="col s12 m12 l12">
+                <h4>Modif d'un compte</h4>
+            </div>
+        </div>
+
+        {% block body %}
+            {{ form(form) }}
+        {% endblock %}
+    </div>
+{% endblock %}

@@ -1,0 +1,35 @@
+ <meta charset="UTF-8">
+
+<style type="text/css">
+    .tourne{
+transform: rotate(-45deg);    
+color: red;
+}
+</style>
+<p style="height:50px"></p>
+<span style="text-align:center;">
+<table>
+<tr>
+<td style="width:250px;"></td>
+<td>
+<h1 class="tourne" style="font-size:60px"> CONFIDENTIEL</h1>
+</td>
+</tr>
+<tr>
+<td style="width:250px;"></td>
+<td>
+Destinataire :  {{ Comptes.Agents.Nom }} {{ Comptes.Agents.Prenom }} <br>
+</td>
+</tr>
+<tr>
+<td style="width:250px;"></td>
+<td>
+Pole/Service : {{ Comptes.Agents.Secteur.Etablissements.EtabLibelle }} / {{ Comptes.Agents.Secteur.SecteurLibelle }} <br><br>
+<p style="text-align:end;">Date de début : {{ Contrat.DateDebut|date('d-m-Y') }}</p>
+</td>
+</tr>
+
+
+
+</table>
+</span>
